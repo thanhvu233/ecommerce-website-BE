@@ -1,0 +1,23 @@
+[
+  {
+    "commentId": "40fc80ba-7f35-4d4f-b571-fbfe684da1e6",
+    "detail": "Lorem sint voluptate officia eu ut sit sunt duis voluptate veniam sint enim sunt non ad nostrud ut sit in occaecat occaecat",
+    "rating": 2,
+    "user": "Wolfe Gardner",
+    "avatar": "https://i.pravatar.cc/300?img=1"
+  },
+  {
+    "commentId": "a8a8ce60-27e0-48ef-b927-24e5a255a7f1",
+    "detail": "irure mollit velit non ex exercitation dolore veniam excepteur ad ut nulla in aute enim dolor labore cupidatat culpa cillum minim dolor",
+    "rating": 1,
+    "user": "Gardner Salazar",
+    "avatar": "https://i.pravatar.cc/300?img=5"
+  },
+  {
+    "commentId": "78799a81-99b5-449d-959a-f8644405c439",
+    "detail": "aliquip deserunt non velit duis aliquip pariatur sit laborum aute aliqua consectetur consectetur fugiat commodo labore reprehenderit ",
+    "rating": 4,
+    "user": "Fowler Shaffer",
+    "avatar": "https://i.pravatar.cc/300?img=7"
+  }
+]

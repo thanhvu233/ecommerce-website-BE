@@ -1,0 +1,65 @@
+[
+  {
+    "id": "bfb8ed25-84e0-4bad-b366-751f66276b7b",
+    "name": "Doris",
+    "address": "15501 Mohr Ville, New Jersey",
+    "phone": "8455944861",
+    "email": "doris90@gmail.com",
+    "username": "doris90",
+    "password": "12345678"
+  },
+  {
+    "id": "43a92673-2be3-4143-afe6-428cb28ec436",
+    "name": "Schmidt",
+    "address": "54923 Daniel Harbors, Shannafort",
+    "phone": "8436862801",
+    "email": "schmidt42@gmail.com",
+    "username": "schmidt42",
+    "password": "schmidt42"
+  },
+  {
+    "id": "8381306f-873c-4988-a1db-e2038d5b3f1f",
+    "name": "Willis",
+    "address": "51909 Aglae Burgs, Lake Vidaberg",
+    "phone": "84994415851",
+    "email": "willis70@gmail.com",
+    "username": "willis70",
+    "password": "willis70"
+  },
+  {
+    "id": "9dd3615e-fa90-4c6d-96c6-406fa5ad6917",
+    "name": "Cabrera",
+    "address": "4420 Clay Springs Apt. 352, North Esteban",
+    "phone": "8452313727",
+    "email": "cabrera29@gmail.com",
+    "username": "cabrera29",
+    "password": "cabrera29"
+  },
+  {
+    "id": "eb213a7a-7c4b-4346-b1a9-dea52bac033d",
+    "name": "Warren",
+    "address": "9422 Kunde River Suite 513, New Jesusmouth",
+    "phone": "8455915568",
+    "email": "warren40@gmail.com",
+    "username": "warren40",
+    "password": "warren40"
+  },
+  {
+    "id": "bb69e934-74ab-4fd2-9ba8-04bfb9127687",
+    "name": "Grady Prince",
+    "address": "Id laborum Dolore q",
+    "phone": "+1 (788) 684-4026",
+    "email": "zavituho@mailinator.com",
+    "username": "cugygypuj",
+    "password": "Pa$$w0rd!"
+  },
+  {
+    "id": "9959faa7-6ebd-462d-b66a-836442012ae2",
+    "name": "Ila Casey",
+    "address": "Eos exercitation ut",
+    "phone": "+1 (714) 866-3279",
+    "email": "luked@mailinator.com",
+    "username": "veliq",
+    "password": "Pa$$w0rd!"
+  }
+]

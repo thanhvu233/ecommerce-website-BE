@@ -1,0 +1,63 @@
+[
+  {
+    "id": "ea04f807-9708-4825-ad2f-53e3eeca2c21",
+    "userId": "bfb8ed25-84e0-4bad-b366-751f66276b7b",
+    "isCheckout": false,
+    "products": [
+      {
+        "productId": "348a77a6-4ab3-42fc-8338-73ecfce6e592",
+        "name": "Men's Cafe Polo Shirt Coordinating Color",
+        "amount": 2,
+        "size": "S",
+        "subTotal": 148,
+        "image": "https://bizweb.dktcdn.net/thumb/1024x1024/100/438/408/products/apm5355-trd-6.jpg?v=1641174453047"
+      },
+      {
+        "productId": "348a77a6-4ab3-42fc-8338-73ecfce6e592",
+        "name": "Men's Cafe Polo Shirt Coordinating Color",
+        "amount": 1,
+        "size": "M",
+        "subTotal": 148,
+        "image": "https://bizweb.dktcdn.net/thumb/1024x1024/100/438/408/products/apm5355-trd-6.jpg?v=1641174453047"
+      },
+      {
+        "productId": "97eb474c-65e7-449e-ad56-4d956fe16ed8",
+        "name": "Men's Lifejacket With Hood Super Light",
+        "amount": 1,
+        "size": "L",
+        "subTotal": 147,
+        "image": "https://bizweb.dktcdn.net/thumb/1024x1024/100/438/408/products/phm5001-tit-3.jpg?v=1641609808340"
+      }
+    ]
+  },
+  {
+    "id": "7d5bcea8-1c74-46d4-aa6e-585e9b42d63d",
+    "userId": "43a92673-2be3-4143-afe6-428cb28ec436",
+    "isCheckout": true,
+    "products": [
+      {
+        "productId": "348a77a6-4ab3-42fc-8338-73ecfce6e592",
+        "name": "Men's Cafe Polo Shirt Coordinating Color",
+        "amount": "1",
+        "size": "S",
+        "subTotal": 148,
+        "image": "https://bizweb.dktcdn.net/thumb/1024x1024/100/438/408/products/apm5355-trd-6.jpg?v=1641174453047"
+      }
+    ]
+  },
+  {
+    "id": "f273b288-8356-4852-be31-a7fa99e83e32",
+    "userId": "43a92673-2be3-4143-afe6-428cb28ec436",
+    "isCheckout": true,
+    "products": [
+      {
+        "productId": "2e5b5a37-6e52-4263-87d4-c8c84aab8cb8",
+        "name": "Chuck Taylor All Star Classic Red Sneakers",
+        "amount": "1",
+        "size": "39",
+        "subTotal": 141,
+        "image": "https://www.converse.com.au/media/catalog/product/cache/122ed3c57cbb9e5a97d45d900d4f4066/u/n/unisex_converse_chuck_taylor_all_star_classic_colour_high_top_red_19621_3.jpg"
+      }
+    ]
+  }
+]
