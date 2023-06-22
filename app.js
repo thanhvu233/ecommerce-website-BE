@@ -1,7 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
+const productRouter = require('./routes/productRoutes')
+const commentRouter = require('./routes/commentRoutes')
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors());
 
 // Development logging
 if (process.env.NODE_ENV === 'development') {
@@ -14,6 +19,9 @@ app.use(
     limit: '10kb',
   })
 );
-// 2. Routes
+
+// Routes
+app.use('/api/v1/products', productRouter);
+app.use('/api/v1/comments', commentRouter);
 
 module.exports = app;
