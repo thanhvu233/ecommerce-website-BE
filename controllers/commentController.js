@@ -16,10 +16,7 @@ exports.getComment = catchAsync(async (req, res, next) => {
   });
 
   if (!doc) {
-    return res.status(404).json({
-      status: "error",
-      message: "No comment found with that ID",
-    });
+    return next(new AppError('No comment found with that ID', 404));
   }
 
   return res.status(200).json({

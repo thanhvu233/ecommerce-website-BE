@@ -1,5 +1,6 @@
 const Product = require("../models/productModel");
 const catchAsync = require("../utils/catchAsync");
+const AppError = require('../utils/appError');
 
 exports.getAllProducts = catchAsync(async (req, res, next) => {
   // Filtering
@@ -51,10 +52,7 @@ exports.getProduct = catchAsync(async (req, res, next) => {
   });
 
   if (!doc) {
-    return res.status(404).json({
-      status: "error",
-      message: "No product found with that ID",
-    });
+    return next(new AppError('No product found with that ID', 404));
   }
 
   return res.status(200).json({
