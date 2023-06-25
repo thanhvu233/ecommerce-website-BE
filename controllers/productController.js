@@ -1,80 +1,67 @@
 const Product = require("../models/productModel");
+const catchAsync = require("../utils/catchAsync");
 
-exports.getAllProducts = async (req, res, next) => {
-  try {
-    // Filtering
-    const queryObj = { ...req.query };
-    excludedFields = ["_page", "sort", "_limit", "fields"];
-    excludedFields.forEach((el) => delete queryObj[el]);
+exports.getAllProducts = catchAsync(async (req, res, next) => {
+  // Filtering
+  const queryObj = { ...req.query };
+  excludedFields = ["_page", "sort", "_limit", "fields"];
+  excludedFields.forEach((el) => delete queryObj[el]);
 
-    // Advanced Filtering
-    let queryStr = JSON.stringify(queryObj);
-    queryStr = queryStr.replace(/\b(gte|gt|lte|lt|ne)\b/g, (match) => `$${match}`);
+  // Advanced Filtering
+  let queryStr = JSON.stringify(queryObj);
+  queryStr = queryStr.replace(/\b(gte|gt|lte|lt|ne)\b/g, (match) => `$${match}`);
 
-    let query = Product.find(JSON.parse(queryStr));
+  let query = Product.find(JSON.parse(queryStr));
 
-    // Sorting
-    if (req.query.sort) {
-      const sortBy = req.query.sort.split(",").join(" ");
-      query = query.sort(sortBy);
-    } else {
-      query = query.sort("-productName");
-    }
+  // Sorting
+  if (req.query.sort) {
+    const sortBy = req.query.sort.split(",").join(" ");
+    query = query.sort(sortBy);
+  } else {
+    query = query.sort("-productName");
+  }
 
-    // Pagination
-    const page = req.query["_page"] * 1 || 1;
-    const limit = req.query["_limit"] * 1 || 50;
-    const skip = (page - 1) * limit;
+  // Pagination
+  const page = req.query["_page"] * 1 || 1;
+  const limit = req.query["_limit"] * 1 || 50;
+  const skip = (page - 1) * limit;
 
-    query = query.skip(skip).limit(limit);
+  query = query.skip(skip).limit(limit);
 
-    if (req.query.page) {
-      if (skip >= req.totalRow) throw new Error("This page does not exist");
-    }
+  if (req.query.page) {
+    if (skip >= req.totalRow) throw new Error("This page does not exist");
+  }
 
-    // EXECUTE QUERY
-    const products = await query;
+  // EXECUTE QUERY
+  const products = await query;
 
-    // SEND RESPONSE
-    res.status(200).json({
-      status: "success",
-      totalRow: req.totalRow,
-      data: {
-        products,
-      },
-    });
-  } catch (error) {
-    res.status(404).json({
-      status: "fail",
-      message: error,
+  // SEND RESPONSE
+  res.status(200).json({
+    status: "success",
+    totalRow: req.totalRow,
+    data: {
+      products,
+    },
+  });
+});
+
+exports.getProduct = catchAsync(async (req, res, next) => {
+  const doc = await Product.findOne({
+    productId: req.params.id,
+  });
+
+  if (!doc) {
+    return res.status(404).json({
+      status: "error",
+      message: "No product found with that ID",
     });
   }
-};
 
-exports.getProduct = async (req, res, next) => {
-  try {
-    const doc = await Product.findOne({
-      productId: req.params.id,
-    });
-
-    if (!doc) {
-      return res.status(404).json({
-        status: "error",
-        message: "No product found with that ID",
-      });
-    }
-
-    return res.status(200).json({
-      status: "success",
-      data: doc,
-    });
-  } catch (error) {
-    res.status(404).json({
-      status: "fail",
-      message: error,
-    });
-  }
-};
+  return res.status(200).json({
+    status: "success",
+    data: doc,
+  });
+});
 
 exports.getFeatureProducts = (req, res, next) => {
   req.query["_limit"] = "4";
@@ -98,7 +85,7 @@ exports.getSignatureProduct = (req, res, next) => {
   next();
 };
 
-exports.getProductCount = async (req, res, next) => {
+exports.getProductCount = catchAsync(async (req, res, next) => {
   // Filtering
   const queryObj = { ...req.query };
   excludedFields = ["_page", "sort", "_limit", "fields"];
@@ -115,4 +102,4 @@ exports.getProductCount = async (req, res, next) => {
   req.totalRow = total;
 
   next();
-};
+});
