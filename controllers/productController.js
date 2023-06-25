@@ -9,7 +9,7 @@ exports.getAllProducts = async (req, res, next) => {
 
     // Advanced Filtering
     let queryStr = JSON.stringify(queryObj);
-    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+    queryStr = queryStr.replace(/\b(gte|gt|lte|lt|ne)\b/g, (match) => `$${match}`);
 
     let query = Product.find(JSON.parse(queryStr));
 
@@ -106,7 +106,7 @@ exports.getProductCount = async (req, res, next) => {
 
   // Advanced Filtering
   let queryStr = JSON.stringify(queryObj);
-  queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+  queryStr = queryStr.replace(/\b(gte|gt|lte|lt|ne)\b/g, (match) => `$${match}`);
 
   const total = await Product.countDocuments(JSON.parse(queryStr));
 
