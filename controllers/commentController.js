@@ -1,5 +1,6 @@
 const Comment = require("../models/commentModel");
 const catchAsync = require("../utils/catchAsync");
+const AppError = require('../utils/appError');
 
 exports.getAllComments = catchAsync(async (req, res, next) => {
   const doc = await Comment.find();
