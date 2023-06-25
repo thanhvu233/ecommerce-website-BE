@@ -20,17 +20,13 @@ exports.signup = catchAsync(async (req, res, next) => {
         username: req.body.username,
     });
 
-    const token = signToken(newUser._id);
-
     res.status(201).json({
         status: 'success',
         data: {
-            user: newUser,
+            userId: newUser._id,
         },
-        token
     });
 });
-
 
 exports.login = catchAsync(async (req, res, next) => {
     const { username, password } = req.body;
