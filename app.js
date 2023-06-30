@@ -3,6 +3,8 @@ const morgan = require('morgan');
 const productRouter = require('./routes/productRoutes')
 const commentRouter = require('./routes/commentRoutes')
 const userRouter = require('./routes/userRoutes')
+const orderRouter = require('./routes/orderRoutes')
+const orderedItemRouter = require('./routes/orderedItemRoutes')
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const cors = require('cors');
@@ -27,6 +29,8 @@ app.use(
 app.use('/api/v1/products', productRouter);
 app.use('/api/v1/comments', commentRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/orders', orderRouter);
+app.use('/api/v1/order-items', orderedItemRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Cant't find ${req.originalUrl} on this server!`, 404));
