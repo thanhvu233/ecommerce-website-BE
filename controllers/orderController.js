@@ -49,3 +49,16 @@ exports.getOrder = catchAsync(async (req, res, next) => {
         },
     });
 });
+
+exports.deleteOrder = catchAsync(async (req, res, next) => {
+    const doc = await Order.findByIdAndDelete(req.params.id);
+  
+    if (!doc) {
+      return next(new AppError('No orders found with that ID', 404));
+    }
+  
+    res.status(204).json({
+      status: 'success',
+      data: null,
+    });
+  });

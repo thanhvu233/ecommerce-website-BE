@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema({
     required: [true, 'A product must have an ID!'],
     unique: true,
   },
-  name: {
+  productName: {
     type: String,
     required: [true, 'A product must have a name!'],
   },

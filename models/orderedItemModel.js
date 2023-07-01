@@ -8,7 +8,7 @@ const orderedItemSchema = new mongoose.Schema({
     },
     product: {
         type: mongoose.Schema.ObjectId,
-        ref: 'Order',
+        ref: 'Product',
         required: [true, 'Ordered item must be a product!'],
     },
     amount: {
@@ -30,7 +30,10 @@ const orderedItemSchema = new mongoose.Schema({
 });
 
 orderedItemSchema.pre(/^find/, function (next) {
-    this.populate('order');
+    this.populate('order').populate({
+        path: 'product',
+        select: 'productName images'
+    });
   
     next();
   });

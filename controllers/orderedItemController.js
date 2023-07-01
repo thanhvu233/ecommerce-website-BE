@@ -59,4 +59,17 @@ exports.getUnpaidItems = catchAsync(async (req, res, next) => {
         status: "success",
         data: doc,
     });
-}); 
+});
+
+exports.deleteOrderedItem = catchAsync(async (req, res, next) => {
+    const doc = await OrderedItem.findByIdAndDelete(req.params.id);
+  
+    if (!doc) {
+      return next(new AppError('No ordered items found with that ID', 404));
+    }
+  
+    res.status(204).json({
+      status: 'success',
+      data: null,
+    });
+  });

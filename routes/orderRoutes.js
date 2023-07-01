@@ -10,5 +10,6 @@ router
     .route("/:id")
     .get(authController.protect, orderController.getOrder)
     .patch(authController.protect, orderController.updateOrder)
+    .delete(authController.protect, orderController.deleteOrder)
 
 module.exports = router;

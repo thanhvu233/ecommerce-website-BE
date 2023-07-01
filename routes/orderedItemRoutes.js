@@ -13,5 +13,6 @@ router.route("/")
 router
     .route("/:id")
     .patch(authController.protect, orderedItemController.updateOrderedItem)
+    .delete(authController.protect, orderedItemController.deleteOrderedItem)
 
 module.exports = router;
