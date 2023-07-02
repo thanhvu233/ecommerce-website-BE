@@ -6,18 +6,16 @@ exports.createOrder = catchAsync(async (req, res, next) => {
     const doc = await Order.create({
         user: req.user.id,
         createdAt: req.body.createdAt,
-        paid: req.body.paid,
         total: req.body.total,
     });
 
     res.status(201).json({
         status: 'success',
-        data: doc
+        data: doc,
     });
 });
 
 exports.updateOrder = catchAsync(async (req, res, next) => {
-    console.log(req.params.id)
     const doc = await Order.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true,
@@ -29,9 +27,7 @@ exports.updateOrder = catchAsync(async (req, res, next) => {
 
     res.status(200).json({
         status: 'success',
-        data: {
-            data: doc,
-        },
+        data: doc,
     });
 });
 
@@ -43,22 +39,22 @@ exports.getOrder = catchAsync(async (req, res, next) => {
     }
 
     return res.status(200).json({
-        status: "success",
+        status: 'success',
         data: {
-            order
+            order,
         },
     });
 });
 
 exports.deleteOrder = catchAsync(async (req, res, next) => {
     const doc = await Order.findByIdAndDelete(req.params.id);
-  
+
     if (!doc) {
-      return next(new AppError('No orders found with that ID', 404));
+        return next(new AppError('No orders found with that ID', 404));
     }
-  
+
     res.status(204).json({
-      status: 'success',
-      data: null,
+        status: 'success',
+        data: null,
     });
-  });
+});

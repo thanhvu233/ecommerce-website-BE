@@ -11,6 +11,11 @@ const orderedItemSchema = new mongoose.Schema({
         ref: 'Product',
         required: [true, 'Ordered item must be a product!'],
     },
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: [true, 'Ordered item must be ordered by an user!'],
+    },
     amount: {
         type: Number,
         required: [true, 'Ordered item must have amount.'],
@@ -23,16 +28,20 @@ const orderedItemSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Ordered item must have size.'],
     },
-    paid: {
-        type: Boolean,
-        default: false,
+    status: {
+        type: String,
+        default: 'pending',
+        enum: {
+            values: ['pending', 'checkout', 'deliver'],
+            message: 'Status is either: pending, checkout, deliver',
+          },
     },
 });
 
 orderedItemSchema.pre(/^find/, function (next) {
     this.populate('order').populate({
         path: 'product',
-        select: 'productName images'
+        select: 'productName images price description'
     });
   
     next();

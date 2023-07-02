@@ -95,8 +95,6 @@ exports.getProductCount = catchAsync(async (req, res, next) => {
 
   const total = await Product.countDocuments(JSON.parse(queryStr));
 
-  console.log(total);
-
   req.totalRow = total;
 
   next();
