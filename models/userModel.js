@@ -22,12 +22,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please provide a password'],
     minlength: 8,
-    select: false
+    select: false,
   },
   phone: {
     type: String,
     required: [true, 'Please provide your phone number'],
-    validate: [validator.isMobilePhone, 'Please provide a valid phone number']
+    validate: [validator.isMobilePhone, 'Please provide a valid phone number'],
   },
   username: {
     type: String,
@@ -56,11 +56,14 @@ userSchema.pre('save', async function (next) {
   this.passwordConfirm = undefined;
 
   next();
-})
+});
 
-userSchema.methods.comparePassword = async function (candidatePassword, userPassword) {
+userSchema.methods.comparePassword = async function (
+  candidatePassword,
+  userPassword
+) {
   return await bcrypt.compare(candidatePassword, userPassword);
-}
+};
 
 userSchema.methods.changePasswordAfter = function (JWTTimestamp) {
   if (this.passwordChangedAt) {

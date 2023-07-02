@@ -13,8 +13,8 @@ const commentSchema = new mongoose.Schema({
     type: String,
     required: [true, 'A product must have a name!'],
   },
-  userId: String
-})
+  userId: String,
+});
 
 const Comment = mongoose.model('Comment', commentSchema);
 

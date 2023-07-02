@@ -1,36 +1,39 @@
-const Product = require("../models/productModel");
-const catchAsync = require("../utils/catchAsync");
+const Product = require('../models/productModel');
+const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
 exports.getAllProducts = catchAsync(async (req, res, next) => {
   // Filtering
   const queryObj = { ...req.query };
-  excludedFields = ["_page", "sort", "_limit", "fields"];
+  excludedFields = ['_page', 'sort', '_limit', 'fields'];
   excludedFields.forEach((el) => delete queryObj[el]);
 
   // Advanced Filtering
   let queryStr = JSON.stringify(queryObj);
-  queryStr = queryStr.replace(/\b(gte|gt|lte|lt|ne)\b/g, (match) => `$${match}`);
+  queryStr = queryStr.replace(
+    /\b(gte|gt|lte|lt|ne)\b/g,
+    (match) => `$${match}`
+  );
 
   let query = Product.find(JSON.parse(queryStr));
 
   // Sorting
   if (req.query.sort) {
-    const sortBy = req.query.sort.split(",").join(" ");
+    const sortBy = req.query.sort.split(',').join(' ');
     query = query.sort(sortBy);
   } else {
-    query = query.sort("-productName");
+    query = query.sort('-productName');
   }
 
   // Pagination
-  const page = req.query["_page"] * 1 || 1;
-  const limit = req.query["_limit"] * 1 || 50;
+  const page = req.query['_page'] * 1 || 1;
+  const limit = req.query['_limit'] * 1 || 50;
   const skip = (page - 1) * limit;
 
   query = query.skip(skip).limit(limit);
 
   if (req.query.page) {
-    if (skip >= req.totalRow) throw new Error("This page does not exist");
+    if (skip >= req.totalRow) throw new Error('This page does not exist');
   }
 
   // EXECUTE QUERY
@@ -38,7 +41,7 @@ exports.getAllProducts = catchAsync(async (req, res, next) => {
 
   // SEND RESPONSE
   res.status(200).json({
-    status: "success",
+    status: 'success',
     totalRow: req.totalRow,
     data: {
       products,
@@ -56,42 +59,45 @@ exports.getProduct = catchAsync(async (req, res, next) => {
   }
 
   return res.status(200).json({
-    status: "success",
+    status: 'success',
     data: doc,
   });
 });
 
 exports.getFeatureProducts = (req, res, next) => {
-  req.query["_limit"] = "4";
-  req.query["_page"] = "1";
-  req.query.category = "shirt";
-  req.query.type = { $in: ["men", "women"] };
+  req.query['_limit'] = '4';
+  req.query['_page'] = '1';
+  req.query.category = 'shirt';
+  req.query.type = { $in: ['men', 'women'] };
   next();
 };
 
 exports.getLatestProducts = (req, res, next) => {
-  req.query["_limit"] = "8";
-  req.query["_page"] = "1";
-  req.query.category = "shirt";
-  req.query.type = { $in: ["men", "women"] };
-  req.query.sort = "-createdAt";
+  req.query['_limit'] = '8';
+  req.query['_page'] = '1';
+  req.query.category = 'shirt';
+  req.query.type = { $in: ['men', 'women'] };
+  req.query.sort = '-createdAt';
   next();
 };
 
 exports.getSignatureProduct = (req, res, next) => {
-  req.params.id = "2e5b5a37-6e52-4263-87d4-c8c84aab8cb8";
+  req.params.id = '2e5b5a37-6e52-4263-87d4-c8c84aab8cb8';
   next();
 };
 
 exports.getProductCount = catchAsync(async (req, res, next) => {
   // Filtering
   const queryObj = { ...req.query };
-  excludedFields = ["_page", "sort", "_limit", "fields"];
+  excludedFields = ['_page', 'sort', '_limit', 'fields'];
   excludedFields.forEach((el) => delete queryObj[el]);
 
   // Advanced Filtering
   let queryStr = JSON.stringify(queryObj);
-  queryStr = queryStr.replace(/\b(gte|gt|lte|lt|ne)\b/g, (match) => `$${match}`);
+  queryStr = queryStr.replace(
+    /\b(gte|gt|lte|lt|ne)\b/g,
+    (match) => `$${match}`
+  );
 
   const total = await Product.countDocuments(JSON.parse(queryStr));
 

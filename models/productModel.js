@@ -18,7 +18,7 @@ const productSchema = new mongoose.Schema({
   sizes: [String],
   type: String,
   createdAt: String,
-})
+});
 
 const Product = mongoose.model('Product', productSchema);
 

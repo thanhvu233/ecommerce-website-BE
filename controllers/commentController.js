@@ -1,12 +1,12 @@
-const Comment = require("../models/commentModel");
-const catchAsync = require("../utils/catchAsync");
+const Comment = require('../models/commentModel');
+const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
 exports.getAllComments = catchAsync(async (req, res, next) => {
   const doc = await Comment.find();
 
   return res.status(200).json({
-    status: "success",
+    status: 'success',
     data: doc,
   });
 });
@@ -21,7 +21,7 @@ exports.getComment = catchAsync(async (req, res, next) => {
   }
 
   return res.status(200).json({
-    status: "success",
+    status: 'success',
     data: doc,
   });
 });
