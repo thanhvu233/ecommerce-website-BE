@@ -4,12 +4,14 @@ const authController = require('../controllers/authController');
 
 const router = express.Router();
 
-router.route('/').post(authController.protect, orderController.createOrder);
+router.use(authController.protect);
+
+router.route('/').post(orderController.createOrder);
 
 router
   .route('/:id')
-  .get(authController.protect, orderController.getOrder)
-  .patch(authController.protect, orderController.updateOrder)
-  .delete(authController.protect, orderController.deleteOrder);
+  .get(orderController.getOrder)
+  .patch(orderController.updateOrder)
+  .delete(orderController.deleteOrder);
 
 module.exports = router;

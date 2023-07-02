@@ -4,19 +4,19 @@ const authController = require('../controllers/authController');
 
 const router = express.Router();
 
-router
-  .route('/unpaid')
-  .get(authController.protect, orderedItemController.getUnpaidItems);
+router.use(authController.protect);
+
+router.route('/unpaid').get(orderedItemController.getUnpaidItems);
 
 router
   .route('/')
-  .get(authController.protect, orderedItemController.getOrderedItem)
-  .post(authController.protect, orderedItemController.createOrderedItem)
-  .patch(authController.protect, orderedItemController.updateOrderedItems);
+  .get(orderedItemController.getOrderedItem)
+  .post(orderedItemController.createOrderedItem)
+  .patch(orderedItemController.updateOrderedItems);
 
 router
   .route('/:id')
-  .patch(authController.protect, orderedItemController.updateOrderedItem)
-  .delete(authController.protect, orderedItemController.deleteOrderedItem);
+  .patch(orderedItemController.updateOrderedItem)
+  .delete(orderedItemController.deleteOrderedItem);
 
 module.exports = router;
