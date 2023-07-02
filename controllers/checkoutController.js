@@ -2,7 +2,7 @@ const OrderedItem = require('../models/orderedItemModel');
 const catchAsync = require('../utils/catchAsync');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-exports.getCheckoutSession = catchAsync(async (req, res, next) => {
+exports.getCheckoutSession = catchAsync(async (req, res) => {
   // 1. Get the unpaid ordered items
   const orderedItems = await OrderedItem.find({
     order: req.params.id,

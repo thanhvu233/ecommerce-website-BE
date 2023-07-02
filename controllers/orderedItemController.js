@@ -2,7 +2,7 @@ const OrderedItem = require('../models/orderedItemModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
-exports.createOrderedItem = catchAsync(async (req, res, next) => {
+exports.createOrderedItem = catchAsync(async (req, res) => {
   const doc = await OrderedItem.create({
     ...req.body,
     user: req.user.id,
@@ -14,7 +14,7 @@ exports.createOrderedItem = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getOrderedItem = catchAsync(async (req, res, next) => {
+exports.getOrderedItem = catchAsync(async (req, res) => {
   const doc = await OrderedItem.find(req.query);
 
   if (!doc) {
@@ -46,7 +46,7 @@ exports.updateOrderedItem = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getUnpaidItems = catchAsync(async (req, res, next) => {
+exports.getUnpaidItems = catchAsync(async (req, res) => {
   const doc = await OrderedItem.find({
     status: 'pending',
     user: req.user.id,

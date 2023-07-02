@@ -2,7 +2,7 @@ const Product = require('../models/productModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
-exports.getAllProducts = catchAsync(async (req, res, next) => {
+exports.getAllProducts = catchAsync(async (req, res) => {
   // Filtering
   const queryObj = { ...req.query };
   excludedFields = ['_page', 'sort', '_limit', 'fields'];

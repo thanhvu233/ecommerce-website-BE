@@ -2,7 +2,7 @@ const Order = require('../models/orderModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
-exports.createOrder = catchAsync(async (req, res, next) => {
+exports.createOrder = catchAsync(async (req, res) => {
   const doc = await Order.create({
     user: req.user.id,
     createdAt: req.body.createdAt,

@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "eslint": "eslint ."
+
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +25,7 @@
     "validator": "^13.9.0"
   },
   "devDependencies": {
+    "eslint": "^8.44.0",
     "prettier": "2.8.8"
   }
 }
