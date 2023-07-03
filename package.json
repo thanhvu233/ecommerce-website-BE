@@ -2,14 +2,16 @@
   "name": "ecommerce-website",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
+  "engines": {
+    "node": "^16"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "nodemon index.js",
     "prettier": "prettier --write .",
     "eslint": "eslint ."
-
   },
   "author": "",
   "license": "ISC",
