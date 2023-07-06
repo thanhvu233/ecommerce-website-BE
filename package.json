@@ -9,7 +9,6 @@
     "dev": "nodemon index.js",
     "prettier": "prettier --write .",
     "eslint": "eslint ."
-
   },
   "author": "",
   "license": "ISC",
